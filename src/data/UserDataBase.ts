@@ -1,4 +1,4 @@
-import { BaseDataBase } from '../data/BaseDatabase'
+import { BaseDataBase } from './BaseDatabase';
 import { USER_ROLES } from '../services/Authenticator';
 
 export class UserDatabase extends BaseDataBase {
@@ -21,6 +21,20 @@ export class UserDatabase extends BaseDataBase {
         role
       })
       .into(UserDatabase.TABLE_NAME);
+  }
+  
+  public async singup (id: string, name:string, email:string){
+    try{ 
+      return await super.getConnection()
+      .insert({
+        id,
+        name,
+        email,
+      })
+      .into(UserDatabase.TABLE_NAME);
+  } catch(error){
+    throw new Error(error.sqlMenssage || error.message);
+    }
   }
 
   public async getUserByEmail(email: string): Promise<any> {
