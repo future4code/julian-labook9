@@ -4,7 +4,6 @@ export class Authenticator {
   private static getExpiresIn(): number {
     return Number(process.env.ACCESS_TOKEN_EXPIRES_IN);
   }
-
   public generateToken(input: AuthenticationData): string {
     const token = jwt.sign(
       {

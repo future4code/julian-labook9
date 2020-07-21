@@ -1,5 +1,6 @@
-import { BaseDataBase } from './BaseDatabase';
 import { USER_ROLES } from '../services/Authenticator';
+import { BaseDataBase } from './BaseDatabase';
+
 
 export class UserDatabase extends BaseDataBase {
   private static TABLE_NAME = 'User'
@@ -21,20 +22,6 @@ export class UserDatabase extends BaseDataBase {
         role
       })
       .into(UserDatabase.TABLE_NAME);
-  }
-  
-  public async singup (id: string, name:string, email:string){
-    try{ 
-      return await super.getConnection()
-      .insert({
-        id,
-        name,
-        email,
-      })
-      .into(UserDatabase.TABLE_NAME);
-  } catch(error){
-    throw new Error(error.sqlMenssage || error.message);
-    }
   }
 
   public async getUserByEmail(email: string): Promise<any> {
