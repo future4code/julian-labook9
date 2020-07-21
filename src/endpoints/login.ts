@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { UserDatabase } from "../data/UserDatabase";
 import HashManager from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
 import { BaseDatabase } from "../data/BaseDatabase";
+import { UserDatabase } from "../data/UserDatabase";
 
 /* Login de usuário criado - POST => /login */
 export const loginEndpoint = async (req: Request, res: Response) => {
