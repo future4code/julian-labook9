@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
-import { PostDatabase } from "../data/PostDataBase";
+import { PostDatabase } from "../data/PostDatabase";
 import { BaseDatabase } from "../data/BaseDatabase";
+import moment from "moment";
 
-export const createPost = async (req: Request, res: Response) => {
+export const createPostEndpoint = async (req: Request, res: Response) => {
 
     try {
         // *Receber token 
@@ -20,8 +21,7 @@ export const createPost = async (req: Request, res: Response) => {
         const postId = idGenerator.generate();
 
         // *Recebendo dados pelo Body
-        const { photo, description, type } = req.body;
-        const creationDate = Date.now();
+        const { photo, description, type, creationDate } = req.body;
 
         // *Criar Post
         const postDatabase = new PostDatabase();
