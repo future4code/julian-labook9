@@ -1,5 +1,7 @@
 import { BaseDatabase } from './BaseDatabase'
 import { USER_ROLES } from '../services/Authenticator';
+import { BaseDataBase } from './BaseDatabase';
+
 
 export class UserDatabase extends BaseDatabase {
   private static TABLE_NAME = 'User'

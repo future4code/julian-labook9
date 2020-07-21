@@ -1,6 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import { AddressInfo } from "net";
+import { signUp } from "./signUp";
+
+
 
 import { loginEndpoint } from "./endpoints/login";
 import { addFriendEndpoint } from "./endpoints/addFriend";
@@ -12,6 +15,7 @@ const app = express();
 
 app.use(express.json());
 
+app.post("/signup", signUp);
 /* path dos endpoints -- manter aqui temporariamente */
 
 app.post("/login", loginEndpoint);
@@ -28,3 +32,4 @@ const server = app.listen(process.env.PORT || 3003, () => {
         console.error(`Failure upon starting server.`);
     }
 });
+
