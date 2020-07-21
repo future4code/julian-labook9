@@ -1,7 +1,7 @@
-import { BaseDataBase } from '../data/BaseDatabase'
+import { BaseDatabase } from './BaseDatabase'
 import { USER_ROLES } from '../services/Authenticator';
 
-export class UserDatabase extends BaseDataBase {
+export class UserDatabase extends BaseDatabase {
   private static TABLE_NAME = 'User'
 
   /* Queries que se comunicam com a tabela de usuários no banco de dados */
