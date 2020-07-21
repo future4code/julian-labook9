@@ -1,17 +1,17 @@
-import {Request, Response, response} from "express";
+import {Request, Response} from "express";
 import { IdGenerator } from "./services/IdGenerator";
 import HashManager from "./services/HashManager";
-import { UserDatabase } from "./data/UserDataBase";
 import { Authenticator } from "./services/Authenticator";
+import { UserDatabase } from "./data/UserDatabase";
 
-export const signUp = async (req: Request, re: Response) => {
+export const signUp = async (req: Request, res: Response) => {
     try {
         const name = req.body.name;
         const email = req.body.email;
         const password = req.body.password;
         const role = req.body.role
 
-// Verificação dos campos desejados
+        /* Verificação dos campos desejados*/
         if(!name || !email || !password) {
             throw new Error('Insira todas as informações desejadas para o cadastro');
         }
@@ -19,11 +19,11 @@ export const signUp = async (req: Request, re: Response) => {
         if(password.length < 6){
             throw new Error('A senha deve ter no minimo 6 caracteres')
         }
-// Gerando o Id
+        /* Gerando o Id*/
         const idGenerator = new IdGenerator();
         const id = idGenerator.generate();
 
-//Criptografando a senha do usuário
+        /*Criptografando a senha do usuário*/
         const hashManager = new HashManager();
         const hashPassword = await hashManager.hash(password);
 
@@ -39,14 +39,14 @@ export const signUp = async (req: Request, re: Response) => {
         const authenticator = new Authenticator();
         const token = authenticator.generateToken({id, role});
 
-        response.status(200).send({
+        res.status(200).send({
             message: 'Usuário criado com sucesso',
             token
         });
 
         
     } catch (error) {
-        response.status(400).send({
+        res.status(400).send({
             message: "error"
         })
     }
