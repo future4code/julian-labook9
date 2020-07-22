@@ -1,4 +1,5 @@
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
+import { USER_ROLES } from "../model/User";
 
 export class Authenticator {
   private static getExpiresIn(): number {
@@ -31,9 +32,4 @@ export class Authenticator {
 interface AuthenticationData {
   id: string
   role: USER_ROLES;
-}
-
-export enum USER_ROLES {
-  NORMAL = "NORMAL",
-  ADMIN = "ADMIN"
 }

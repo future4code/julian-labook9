@@ -1,8 +1,7 @@
 import { BaseDatabase } from "./BaseDatabase";
 
-
 export class FeedDatabase extends BaseDatabase {
-    public async getFeed(userId: string): Promise<any> {
+    public async createFeed(userId: string): Promise<any> {
         const result = await this.getConnection().raw(`
             SELECT Posts.posts_id, photo, description, creation_date, type, User.id, User.name
             FROM Posts
@@ -14,4 +13,6 @@ export class FeedDatabase extends BaseDatabase {
         `);
         return result[0]
     }
-}
+
+    // public async getAllPosts(): Promise<any> {}
+};

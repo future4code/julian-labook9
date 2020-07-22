@@ -1,4 +1,5 @@
 import { BaseDatabase } from "./BaseDatabase";
+import { TypePost } from "../model/Post";
 import moment from "moment";
 
 export class PostDatabase extends BaseDatabase{
@@ -24,9 +25,4 @@ export class PostDatabase extends BaseDatabase{
             .where({post_id: PostId});
         return result[0]
     };
-};
-
-export enum TypePost{
-    NORMAL = 'Normal',
-    EVENTO = 'Evento'
 };
