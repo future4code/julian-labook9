@@ -1,6 +1,5 @@
-import { BaseDatabase } from './BaseDatabase'
 import { USER_ROLES } from '../services/Authenticator';
-
+import { BaseDatabase } from './BaseDatabase'
 
 
 export class UserDatabase extends BaseDatabase {

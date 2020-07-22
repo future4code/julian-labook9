@@ -4,7 +4,7 @@ import { FeedDatabase } from "../data/FeedDatabase";
 import moment from "moment";
 import { BaseDatabase } from "../data/BaseDatabase";
 
-export const getFeed = async (req: Request , res: Response) => {
+export const FeedEndpoint = async (req: Request , res: Response) => {
     try {
         const token = req.headers.authorization as string;
         
