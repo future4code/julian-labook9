@@ -2,7 +2,7 @@ import {Request, Response} from "express";
 import { IdGenerator } from "./services/IdGenerator";
 import HashManager from "./services/HashManager";
 import { Authenticator } from "./services/Authenticator";
-import { UserDatabase } from "./data/UserDatabase";
+
 
 export const signUp = async (req: Request, res: Response) => {
     try {

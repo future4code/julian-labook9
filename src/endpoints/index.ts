@@ -1,13 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import { AddressInfo } from "net";
-import { signUp } from "./signUp";
+import { signUp } from "../signUp";
 
-
-
-import { loginEndpoint } from "./endpoints/login";
-import { addFriendEndpoint } from "./endpoints/addFriend";
-import { undoFriendshipEndpoint } from "./endpoints/undoFriendship";
+import { loginEndpoint } from "./login";
+import { addFriendEndpoint } from "./addFriend";
+import { undoFriendshipEndpoint } from "./undoFriendship";
 
 dotenv.config();
 
