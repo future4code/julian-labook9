@@ -13,7 +13,7 @@ export const FeedEndpoint = async (req: Request , res: Response) => {
         const userId = authenticationData.id;
 
         const feedDatabase = new FeedDatabase();
-        const feed = await feedDatabase.getFeed(userId);
+        const feed = await feedDatabase.createFeed(userId);
         const mappedFeed = feed.map((post: any) =>({
             id: post.post_id,
             photo: post.title,
