@@ -11,7 +11,7 @@ export class User {
         private password: string,
         private role: USER_ROLES,
     ) {
-        (this.role === "NORMAL") ? this.role = USER_ROLES.NORMAL : this.role = USER_ROLES.ADMIN;
+        
     }
 
     public getId = () => this.id;
@@ -19,4 +19,9 @@ export class User {
     public getEmail = () => this.email;
     public getPassword = () => this.password;
     public getRole = () => this.role;
+    
 };
+
+export const toUserRole = (value : string ) : USER_ROLES => {
+    return (value === "NORMAL") ? USER_ROLES.NORMAL :  USER_ROLES.ADMIN;
+} 

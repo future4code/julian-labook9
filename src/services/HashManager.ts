@@ -12,9 +12,11 @@ export default class HashManager {
     }
 
     /* Quando o usuário faz login, comparamos o hash do banco com a senha inserida */
-    public async compare(text: string, cipherText: string): Promise<boolean> {
+    public async compare(text: string, cipherText: string): Promise<any> {
         const result = await bcrypt.compare(text, cipherText)
 
         return result
     }
+
+
 }
