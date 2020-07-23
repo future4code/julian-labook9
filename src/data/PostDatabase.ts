@@ -1,5 +1,5 @@
 import { BaseDatabase } from "./BaseDatabase";
-import { TypePost } from "../model/Post";
+import { TypePost, Post } from "../model/Post";
 import moment from "moment";
 
 export class PostDatabase extends BaseDatabase{
@@ -18,7 +18,7 @@ export class PostDatabase extends BaseDatabase{
         .into(PostDatabase.TABLE_NAME)
     };
 
-    public async getPostById(PostId: string): Promise<any>{
+    public async getPostById(PostId: string): Promise<Post>{
         const result = await this.getConnection()
             .select('*')
             .from(PostDatabase.TABLE_NAME)

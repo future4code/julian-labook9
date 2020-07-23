@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { USER_ROLES } from "../model/User";
+import { USER_ROLES, toUserRole } from "../model/User";
 
 export class Authenticator {
   private static getExpiresIn(): number {
@@ -9,6 +9,9 @@ export class Authenticator {
     const token = jwt.sign(
       {
         id: input.id,
+        email: input.email,
+        role: input.role
+
       },
       process.env.JWT_KEY as string,
       {
@@ -23,13 +26,16 @@ export class Authenticator {
     const payload = jwt.verify(token, process.env.JWT_KEY as string) as any;
     const result = {
       id: payload.id,
-      role: payload.role
+      email: payload.email,
+      role: toUserRole(payload.role)
     }
     return result;
   }
 }
 
 interface AuthenticationData {
-  id: string
+  id: string;
+  email: string;
   role: USER_ROLES;
+  
 }

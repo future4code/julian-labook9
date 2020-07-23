@@ -1,7 +1,7 @@
 import knex from "knex";
 import Knex from "knex";
 
-/* Classe que realiza a conexão com o banco, utilizando knex */
+
 export abstract class BaseDatabase {
     private static connection: Knex | null = null;
     protected getConnection(): Knex {

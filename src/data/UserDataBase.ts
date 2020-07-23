@@ -1,30 +1,36 @@
 import { BaseDatabase } from './BaseDatabase'
-import { USER_ROLES } from '../model/User';
+import { USER_ROLES, User } from '../model/User';
 
 
 export class UserDatabase extends BaseDatabase {
   private static TABLE_NAME = 'User'
 
   /* Queries que se comunicam com a tabela de usuários no banco de dados */
-  public async createUser(
-    id: string,
-    name: string,
-    email: string,
-    password: string,
-    role: USER_ROLES
-  ): Promise<void> {
+  private toModel (dbModel? : any): User | undefined {
+    return (
+      dbModel && 
+      new User (
+        dbModel.id,
+        dbModel.name,
+        dbModel.email,
+        dbModel.password,
+        dbModel.role,
+      )
+    )
+  }
+  public async createUser( user:User ): Promise<void> {
     await this.getConnection()
       .insert({
-        id,
-        name,
-        email,
-        password,
-        role
+        id:user.getId(),
+        name:user.getName(),
+        email:user.getEmail(),
+        password:user.getPassword(),
+        role:user.getRole(),
       })
       .into(UserDatabase.TABLE_NAME);
   }
 
-  public async getUserByEmail(email: string): Promise<any> {
+  public async getUserByEmail(email: string): Promise<User> {
     const result = await this.getConnection()
       .select("*")
       .from(UserDatabase.TABLE_NAME)
@@ -33,7 +39,7 @@ export class UserDatabase extends BaseDatabase {
     return result[0];
   }
 
-  public async getUserById(id: string): Promise<any> {
+  public async getUserById(id: string): Promise<User>  {
     const result = await this.getConnection()
       .select("*")
       .from(UserDatabase.TABLE_NAME)
