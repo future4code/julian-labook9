@@ -66,13 +66,13 @@ export class UserBusiness {
             throw new Error("Usuário ou senha inválidos");
         }
 
-        const accessToken = new Authenticator().generateToken({
+        const access_token = new Authenticator().generateToken({
             id: user.getId(),
             email: user.getEmail(),
             role: user.getRole(),
         });
 
-        return { accessToken };
+        return { access_token };
     }
 };
 

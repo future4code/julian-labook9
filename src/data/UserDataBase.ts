@@ -36,7 +36,7 @@ export class UserDatabase extends BaseDatabase {
       .from(UserDatabase.TABLE_NAME)
       .where({ email });
 
-    return new User (result[0].id, result[0].name, result[0].email, result[0].password, result[0].USER_ROLES);
+    return new User(result[0].id, result[0].name, result[0].email, result[0].password, result[0].USER_ROLES);
   }
 
   public async getUserById(id: string): Promise<User> {

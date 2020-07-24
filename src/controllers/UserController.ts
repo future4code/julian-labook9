@@ -35,7 +35,7 @@ export class UserController {
                 req.body.role
             )
 
-            res.status(200).send({ access_token: result });
+            res.status(200).send({ result });
 
         } catch (err) {
             res.status(400).send({ message: err.message });

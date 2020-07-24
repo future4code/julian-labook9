@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { UserBusiness } from "../business/UserBusiness";
 import { Authenticator } from "../services/Authenticator";
 import { FeedDatabase } from "../data/FeedDatabase";
 import { BaseDatabase } from "../data/BaseDatabase";

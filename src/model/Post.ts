@@ -1,13 +1,13 @@
 import moment from "moment";
 
-export enum TypePost{
+export enum TypePost {
     NORMAL = 'Normal',
     EVENTO = 'Evento'
 };
 
 export class Post {
     constructor(
-        private user_id:string,
+        private user_id: string,
         private post_id: string,
         private photo: string,
         private description: string,
