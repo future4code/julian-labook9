@@ -13,9 +13,7 @@ export class Post {
         private description: string,
         private creation_date: string = moment().format("YYYY-MM-DD"),
         private type: TypePost
-    ) {
-        (this.type === "Normal") ? this.type = TypePost.NORMAL : this.type = TypePost.EVENTO;
-    }
+    ) {}
 
     public getId = () => this.user_id;
     public getPost = () => this.post_id;
@@ -24,3 +22,12 @@ export class Post {
     public getCreationDate = () => this.creation_date;
     public getType = () => this.type;
 };
+
+export const toType = (value: string): TypePost => {
+    return (value === "NORMAL") ? TypePost.NORMAL : TypePost.EVENTO;
+}
+
+export interface GetPostsByTypeDTO {
+    type: string,
+    orderType: string
+}

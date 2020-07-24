@@ -1,12 +1,12 @@
 import { Authenticator } from "../services/Authenticator";
-import { UserDatabase } from "../data/UserDataBase";
+import { UserDatabase } from "../data/UserDatabase";
 import { UsersRelationDatabase } from "../data/UsersRelationDatabase";
 
 export class FriendBusiness {
     public async addFriend(
-        token: string, 
+        token: string,
         addFriendById: string
-    ){
+    ) {
         const authenticator = new Authenticator();
         const authenticationData = authenticator.getData(token);
         const userId = authenticationData.id;
@@ -21,7 +21,7 @@ export class FriendBusiness {
         if (!user) {
             throw new Error("Usuário não existe")
         };
-        
+
         const usersRelationDatabase = new UsersRelationDatabase();
         await usersRelationDatabase.addFriend(
             userId,

@@ -2,7 +2,7 @@ import { USER_ROLES, User, toUserRole } from "../model/User";
 import { IdGenerator } from "../services/IdGenerator";
 import HashManager from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
-import { UserDatabase } from "../data/UserDataBase";
+import { UserDatabase } from "../data/UserDatabase";
 
 export class UserBusiness {
     public async signup(

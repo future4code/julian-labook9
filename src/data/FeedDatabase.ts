@@ -1,7 +1,9 @@
-import { Post } from "../model/Post";
+import { Post, GetPostsByTypeDTO } from "../model/Post";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class FeedDatabase extends BaseDatabase {
+    private static TABLE_NAME: string = 'Posts';
+
     public async createFeed(userId: string): Promise<Post[]> {
         const result = await this.getConnection().raw(`
             SELECT Posts.posts_id, photo, description, creation_date, type, User.id, User.name
@@ -15,4 +17,16 @@ export class FeedDatabase extends BaseDatabase {
         return result[0]
     }
 
+    public async getPostsByType(userData: GetPostsByTypeDTO): Promise<Post[]> {
+
+        const users = await this.getConnection()
+            .select("*")
+            .from(FeedDatabase.TABLE_NAME)
+            .where({type: userData.type})
+            .orderBy(userData.orderType)
+
+        await BaseDatabase.destroyConnection()
+               
+        return users
+    }
 };

@@ -2,7 +2,7 @@ import { BaseDatabase } from "../data/BaseDatabase";
 import { UsersRelationDatabase } from "../data/UsersRelationDatabase";
 import { Authenticator } from "../services/Authenticator";
 import { Request, Response } from "express";
-import { UserDatabase } from "../data/UserDataBase";
+import { UserDatabase } from "../data/UserDatabase";
 
 
 export class FriendController {

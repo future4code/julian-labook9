@@ -3,7 +3,7 @@ import { Post } from "../model/Post";
 
 
 export class PostDatabase extends BaseDatabase {
-    private static TABLE_NAME = 'Posts';
+    private static TABLE_NAME: string = 'Posts';
 
     private toModel (dbModel? : any): Post | undefined {
         return (
