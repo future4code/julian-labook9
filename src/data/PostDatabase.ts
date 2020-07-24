@@ -3,7 +3,7 @@ import { TypePost, Post } from "../model/Post";
 import moment from "moment";
 
 export class PostDatabase extends BaseDatabase {
-    private static TABLE_NAME = 'Posts';
+    private static TABLE_NAME: string = 'Posts';
 
     public async createPost(
         post_id: string,
