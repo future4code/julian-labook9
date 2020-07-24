@@ -30,7 +30,7 @@ export class PostDatabase extends BaseDatabase{
             return this.toModel(posts);
           }) as Post[];
     };
-    
+
     public async createPost(post: Post): Promise<void>{
         await this.getConnection()
         .insert({
@@ -42,6 +42,7 @@ export class PostDatabase extends BaseDatabase{
             type:post.getType()
         }).into(PostDatabase.TABLE_NAME)
     };
+
 
     public async getPostById(PostId: string): Promise<Post>{
         const result = await this.getConnection()
