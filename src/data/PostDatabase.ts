@@ -2,7 +2,7 @@ import { BaseDatabase } from "./BaseDatabase";
 import { Post } from "../model/Post";
 
 
-export class PostDatabase extends BaseDatabase{
+export class PostDatabase extends BaseDatabase {
     private static TABLE_NAME = 'Posts';
 
     private toModel (dbModel? : any): Post | undefined {
@@ -43,11 +43,11 @@ export class PostDatabase extends BaseDatabase{
         }).into(PostDatabase.TABLE_NAME)
     };
 
-    public async getPostById(PostId: string): Promise<Post>{
+    public async getPostById(PostId: string): Promise<Post> {
         const result = await this.getConnection()
             .select('*')
             .from(PostDatabase.TABLE_NAME)
-            .where({post_id: PostId});
+            .where({ post_id: PostId });
         return result[0]
     };
 };

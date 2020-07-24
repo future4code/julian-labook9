@@ -1,5 +1,5 @@
 import express from "express";
-import { FriendController } from "../controller/FriendController";
+import { FriendController } from "../controllers/FriendController";
 
 export const friendRouter = express.Router();
 

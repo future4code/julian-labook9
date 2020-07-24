@@ -34,17 +34,17 @@ export class FeedController {
         await BaseDatabase.destroyConnection();
     }    
 
-    async feedEndpoint (req: Request , res: Response) {
+    async feedEndpoint(req: Request, res: Response) {
         try {
             const token = req.headers.authorization as string;
-            
+
             const authenticator = new Authenticator();
             const authenticationData = authenticator.getData(token);
             const userId = authenticationData.id;
-    
+
             const feedDatabase = new FeedDatabase();
             const feed = await feedDatabase.createFeed(userId);
-            const mappedFeed = feed.map((post: any) =>({
+            const mappedFeed = feed.map((post: any) => ({
                 id: post.post_id,
                 photo: post.title,
                 description: post.description,
@@ -60,6 +60,5 @@ export class FeedController {
         }
         await BaseDatabase.destroyConnection();
     }
-
 
 };

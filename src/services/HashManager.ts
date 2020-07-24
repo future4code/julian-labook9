@@ -5,7 +5,7 @@ export default class HashManager {
     public async hash(text: string): Promise<string> {
         const rounds = Number(process.env.BCRYPT_COST);
         const salt = await bcrypt.genSalt(rounds);
-        
+
         const cipherText = await bcrypt.hash(text, salt);
 
         return cipherText;

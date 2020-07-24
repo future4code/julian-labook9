@@ -37,5 +37,5 @@ interface AuthenticationData {
   id: string;
   email: string;
   role: USER_ROLES;
-  
+
 }
