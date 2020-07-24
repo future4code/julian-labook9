@@ -2,7 +2,7 @@ import { BaseDatabase } from "./BaseDatabase";
 import { Post } from "../model/Post";
 
 export class FeedDatabase extends BaseDatabase {
-    public async createFeed(userId: string): Promise<Post []> {
+    public async createFeed(userId: string): Promise<Post[]> {
         const result = await this.getConnection().raw(`
             SELECT Posts.posts_id, photo, description, creation_date, type, User.id, User.name
             FROM Posts
