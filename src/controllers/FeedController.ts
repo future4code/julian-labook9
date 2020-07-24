@@ -5,6 +5,7 @@ import { BaseDatabase } from "../data/BaseDatabase";
 import { PostDatabase } from "../data/PostDatabase";
 import { IdGenerator } from "../services/IdGenerator";
 import moment from "moment";
+import { FeedBusiness } from "../business/FeedBusiness";
 
 export class FeedController {
     async createPostEndpoint(req: Request, res: Response) {
@@ -64,6 +65,20 @@ export class FeedController {
             })
         }
         await BaseDatabase.destroyConnection();
+    }
+
+    async getPostsByType(req: Request, res: Response) {
+        try {
+            const type = await new FeedBusiness().getPostsByType({
+                type: req.query.type as string,
+                orderType: req.query.orderType as string || "ASC",
+            });
+
+            res.status(200).send({ type });
+        } catch (err) {
+            res.status(400).send({ message: err.message })
+        }
+
     }
 
 };

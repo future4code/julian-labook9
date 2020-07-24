@@ -17,6 +17,10 @@ export class User {
     public getEmail = () => this.email;
     public getPassword = () => this.password;
     public getRole = () => this.role;
+
+    public setId = (id: string) => this.id = id;
+    public setName = (name: string) => this.name = name;
+    public setEmail = (email: string) => this.email = email;
 };
 
 export const toUserRole = (value: string): USER_ROLES => {
