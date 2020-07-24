@@ -10,14 +10,14 @@ export class FeedBusiness {
         if(!validTypes.includes(postData.type)){
             throw new CustomError(
                 406,
-                "Parâmetro type deve valer Teacher, Operations, CX ou Student"
+                "Parâmetro type deve retornar apenas parâmetros do tipo Normal ou Evento."
             )
         }
 
         if(!["ASC", "DESC"].includes(postData.orderType)){
             throw new CustomError(
                 406,
-                "Parâmetro orderBy deve valer email ou name"
+                "Parâmetro orderBy deve ser do tipo Normal ou Evento."
             )
         }
 
