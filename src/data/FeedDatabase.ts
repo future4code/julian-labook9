@@ -1,5 +1,5 @@
-import { BaseDatabase } from "./BaseDatabase";
 import { Post } from "../model/Post";
+import { BaseDatabase } from "./BaseDatabase";
 
 export class FeedDatabase extends BaseDatabase {
     public async createFeed(userId: string): Promise<Post[]> {

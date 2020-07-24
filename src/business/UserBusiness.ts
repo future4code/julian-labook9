@@ -1,8 +1,8 @@
 import { USER_ROLES, User, toUserRole } from "../model/User";
 import { IdGenerator } from "../services/IdGenerator";
 import HashManager from "../services/HashManager";
-import { UserDatabase } from "../data/UserDataBase";
 import { Authenticator } from "../services/Authenticator";
+import { UserDatabase } from "../data/UserDataBase";
 
 export class UserBusiness {
     public async signup(
@@ -66,13 +66,13 @@ export class UserBusiness {
             throw new Error("Usuário ou senha inválidos");
         }
 
-        const access_token = new Authenticator().generateToken({
-            id: user.getId(),
-            email: user.getEmail(),
-            role: user.getRole(),
-        });
-
-        return { access_token };
+            const accessToken = new Authenticator().generateToken({
+                id: user.getId(),
+                email: user.getEmail(),
+                role: user.getRole(),
+              });
+          
+              return {  accessToken };
     }
 };
 
