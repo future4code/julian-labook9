@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { BaseDatabase } from "../data/BaseDatabase";
 import { UserBusiness } from "../business/UserBusiness";
+import { BaseDatabase } from "../data/BaseDatabase";
 
 
 export class UserController {
@@ -17,7 +17,6 @@ export class UserController {
                 message: 'Usuário criado com sucesso',
                 result
             });
-    
             
         } catch (error) {
             res.status(400).send({
