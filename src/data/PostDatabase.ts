@@ -30,7 +30,7 @@ export class PostDatabase extends BaseDatabase {
             return this.toModel(posts);
           }) as Post[];
     };
-    
+
     public async createPost(post: Post): Promise<void>{
         await this.getConnection()
         .insert({
